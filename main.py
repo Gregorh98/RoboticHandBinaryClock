@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def numberAsBinaryString(num: int) -> str:
     """
     :param num: Integer, A number to convert
@@ -7,11 +9,13 @@ def numberAsBinaryString(num: int) -> str:
     binNumString = ('{0:05b}'.format(num))[::-1]
     return binNumString
 
+
 def binaryStringAsFingerLayout(bNum: str) -> dict:
     """
     :param bNum: String, A 5 digit inverted binary sequence
     :return: A dictionary of each finger and its output configuration. Off == Finger up, On == Finger Down
     """
+
     pins = {
         "thumb": False,
         "index": False,
@@ -25,9 +29,17 @@ def binaryStringAsFingerLayout(bNum: str) -> dict:
 
     return pins
 
-#Test 0h -> 23h
-for num in range(24):
+
+def numToFingerLayout(num: str) -> dict:
+    """
+    :param num: Integer, Hour up to 23
+    :return: A dictionary of each finger and its output configuration. Off == Finger up, On == Finger Down
+    """
+
     processedNum = numberAsBinaryString(num)
     fingerLayout = binaryStringAsFingerLayout(processedNum)
+    return fingerLayout
 
-    print(num, processedNum, fingerLayout)
+
+currentTime = datetime.now().time().hour
+print(currentTime, numToFingerLayout(currentTime))
