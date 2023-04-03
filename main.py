@@ -3,16 +3,16 @@ from datetime import datetime
 def numberAsBinaryString(num: int) -> str:
     """
     :param num: Integer, A number to convert
-    :return: An inverted binary sequence string (read left to right (1,2,4,8,16))
+    :return: An binary sequence string (read left to right (1,2,4,8,16))
     """
 
-    binNumString = ('{0:05b}'.format(num))[::-1]
+    binNumString = ('{0:05b}'.format(num))
     return binNumString
 
 
 def binaryStringAsFingerLayout(bNum: str) -> dict:
     """
-    :param bNum: String, A 5 digit inverted binary sequence
+    :param bNum: String, A 5 digit binary sequence
     :return: A dictionary of each finger and its output configuration. Off == Finger up, On == Finger Down
     """
 
