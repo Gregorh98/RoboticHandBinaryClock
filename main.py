@@ -6,7 +6,7 @@ def numberAsBinaryString(num: int) -> str:
     :return: An binary sequence string (read left to right (1,2,4,8,16))
     """
 
-    binNumString = ('{0:05b}'.format(num))
+    binNumString = ('{0:06b}'.format(num))
     return binNumString
 
 
@@ -17,6 +17,7 @@ def binaryStringAsFingerLayout(bNum: str) -> dict:
     """
 
     pins = {
+        "thumb_knuckle" : False,
         "thumb": False,
         "index": False,
         "middle": False,
@@ -41,5 +42,15 @@ def numToFingerLayout(num: str) -> dict:
     return fingerLayout
 
 
-currentTime = datetime.now().time().hour
-print(currentTime, numToFingerLayout(currentTime))
+cHour   = 0;
+cMinute = 0
+while True:
+    hour = datetime.now().time().hour
+    minutes = datetime.now().time().minute
+
+    if cMinute != minutes:
+        print(str(hour)+":"+str(minutes))
+        print("Hour: ", numToFingerLayout(hour))
+        print("Minutes: ", numToFingerLayout(minutes))
+        print("\n")
+        cMinute = minutes
